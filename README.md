@@ -24,7 +24,7 @@ $$
 \end{equation}
 $$
 
-Different objective functions  have been proposed to estimate independent components $ \boldsymbol{y} $ from data $ \boldsymbol{x} $. In their original paper [Lu and Rajapaske (2006)](https://www.sciencedirect.com/science/article/abs/pii/S0925231205003176) proposed to use and approximation of negentropy as objective function:
+Different objective functions  have been proposed to estimate independent components $\boldsymbol{y}$ from data $ \boldsymbol{x} $. In their original paper [Lu and Rajapaske (2006)](https://www.sciencedirect.com/science/article/abs/pii/S0925231205003176) proposed to use and approximation of negentropy as objective function:
 
 $$
 \begin{equation}
