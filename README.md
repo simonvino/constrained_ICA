@@ -16,7 +16,7 @@ A demo version is provided, which can be directly run in Google Colab with:
 
 ## Theory
 
-Like in classical ICA, the basic goal of constrained ICA (cICA) is to estimate a set of $ N $ source components $ \boldsymbol{y} \in \mathbb{R}^{N} $ from the observed data $ \boldsymbol{x} \in \mathbb{R}^{K} $ by estimating a demixing/weight matrix $ \boldsymbol{W} \in \mathbb{R}^{N \times K} $:
+Like in classical ICA, the basic goal of constrained ICA (cICA) is to estimate a set of $N$ source components $\boldsymbol{y} \in \mathbb{R}^{N}$ from the observed data $\boldsymbol{x} \in \mathbb{R}^{K}$ by estimating a demixing/weight matrix $\boldsymbol{W} \in \mathbb{R}^{N \times K}$:
 
 $$
 \begin{equation}
@@ -24,7 +24,7 @@ $$
 \end{equation}
 $$
 
-Different objective functions  have been proposed to estimate independent components $\boldsymbol{y}$ from data $ \boldsymbol{x} $. In their original paper [Lu and Rajapaske (2006)](https://www.sciencedirect.com/science/article/abs/pii/S0925231205003176) proposed to use and approximation of negentropy as objective function:
+Different objective functions  have been proposed to estimate independent components $\boldsymbol{y}$ from data $\boldsymbol{x}$. In their original paper [Lu and Rajapaske (2006)](https://www.sciencedirect.com/science/article/abs/pii/S0925231205003176) proposed to use and approximation of negentropy as objective function:
 
 $$
 \begin{equation}
@@ -32,7 +32,7 @@ $$
 \end{equation}
 $$
 
-where $ \rho $ denotes a positive constant, $ E\{\cdot\} $ represents the expectation value and $ \nu $ is a Gaussian random variable with zero mean and unit variance. Further $ G(\cdot) $ can be any non-quadratic function, which can practically be chosen as $ G(y) = (\textrm{log} \,\, \textrm{cosh}(a_1 y)) / a_1 $ with constants $ 1 \leq a_1 \leq 2 $. Besides maximizing the objective function $ J(y) $, cICA includes the similarity to a given reference component $ r_n(t) $ as constraint into the optimization. This additional constraint can be formulated as $ g(\boldsymbol{w}) = \rho - \epsilon (y, r) \le 0 $, where $ \rho $ denotes a pre-defined similarity threshold parameter, and $ \epsilon(\cdot) $ a function that measures the closeness of the estimated source component $ y $ to a reference $ r $. The similarity can be simply defined as correlation between $ y $ and $ r $ as $ \epsilon(y, r) = E[y, r] $. Based on these definitions, the augmented Lagrangian function $ \mathcal{L}(\boldsymbol{W}, \boldsymbol{\mu}) $ for estimating $ N $ source components $ y $, given $ N $ references $ r_n $ can be defined as}: 
+where $\rho$ denotes a positive constant, $E\{\cdot\}$ represents the expectation value and $\nu$ is a Gaussian random variable with zero mean and unit variance. Further $G(\cdot)$ can be any non-quadratic function, which can practically be chosen as $G(y) = (\textrm{log} \,\, \textrm{cosh}(a_1 y)) / a_1$ with constants $1 \leq a_1 \leq 2$. Besides maximizing the objective function $J(y)$, cICA includes the similarity to a given reference component $r_n(t)$ as constraint into the optimization. This additional constraint can be formulated as $g(\boldsymbol{w}) = \rho - \epsilon (y, r) \le 0$, where $\rho$ denotes a pre-defined similarity threshold parameter, and $\epsilon(\cdot)$ a function that measures the closeness of the estimated source component $y$ to a reference $r$. The similarity can be simply defined as correlation between $y$ and $r$ as $\epsilon(y, r) = E[y, r]$. Based on these definitions, the augmented Lagrangian function $\mathcal{L}(\boldsymbol{W}, \boldsymbol{\mu})$ for estimating $N$ source components $y$, given $N$ references $r_n$ can be defined as}: 
 
 $$
 \begin{equation}
@@ -40,7 +40,7 @@ $$
 \end{equation}
 $$
 
-with $ \boldsymbol{\mu} = (\mu_1, \ldots, \mu_N)^{T} $ denoting a set of Lagrangian multipliers, and $ \boldsymbol{\gamma} = ( \gamma_1, \ldots, \gamma_N )^T $ representing positive learning parameters for the penalty term. The Lagrangian function can then be maximised by simply using a gradient-based learning update rule:
+with $\boldsymbol{\mu} = (\mu_1, \ldots, \mu_N)^{T}$ denoting a set of Lagrangian multipliers, and $\boldsymbol{\gamma} = ( \gamma_1, \ldots, \gamma_N )^T$ representing positive learning parameters for the penalty term. The Lagrangian function can then be maximised by simply using a gradient-based learning update rule:
 
 $$
 \begin{equation}
@@ -48,7 +48,7 @@ $$
 \end{equation}
 $$
 
-where the update step at iteration $ i $ is controlled by the learning rate $ \eta $. 
+where the update step at iteration $i$ is controlled by the learning rate $\eta$. 
 
 As an alternative to maximizing negentropy as introduced above, the algorithm implements the Infomax objective function (equivalent to the maximum likelihood principle): 
 
@@ -58,7 +58,7 @@ $$
 \end{equation}
 $$
 
-whereby $ p(y) $ denotes the probability density function of $ y $. To estimate a more diverse set of source signals the extended infomax algorithm adapts this nonlinearity to both super- and sub-Gaussion distributions [Lee at al. (1999)](https://dl.acm.org/doi/10.1162/089976699300016719). The gradient of $ p(y) $ with respect to $ y $ can be chosen as $ \frac{p(\partial y)}{\partial y} = \textrm{tanh}(y) - y $ for sub-Gaussion sources and $ \frac{\partial p(y)}{\partial y} = \textrm{tanh}(y) - y $ for super-Gaussion sources.
+whereby $p(y)$ denotes the probability density function of $y$. To estimate a more diverse set of source signals the extended infomax algorithm adapts this nonlinearity to both super- and sub-Gaussion distributions [Lee at al. (1999)](https://dl.acm.org/doi/10.1162/089976699300016719). The gradient of $p(y)$ with respect to $y$ can be chosen as $\frac{p(\partial y)}{\partial y} = \textrm{tanh}(y) - y$ for sub-Gaussion sources and $\frac{\partial p(y)}{\partial y} = \textrm{tanh}(y) - y$ for super-Gaussion sources.
 
 Per default this implementation maximizes Negentropy (argument ``` obj_func='negentr' ```), but can be adapted to the Infomax (``` obj_func='infomax' ```), as well as extended Infomax (``` obj_func='ext_infomax' ```).  
 
