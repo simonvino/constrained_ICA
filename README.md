@@ -28,11 +28,11 @@ Different objective functions  have been proposed to estimate independent compon
 
 $$
 \begin{equation}
-    J(y) = \rho [ E\{G(y)\} - E\{G(\nu)\} ]^2
+    J(y) = \rho ( E [ G(y) ] - E [ G(\nu) ] )^2
 \end{equation}
 $$
 
-where $\rho$ denotes a positive constant, $E\{\cdot\}$ represents the expectation value and $\nu$ is a Gaussian random variable with zero mean and unit variance. Further $G(\cdot)$ can be any non-quadratic function, which can practically be chosen as $G(y) = (\textrm{log} \,\, \textrm{cosh}(a_1 y)) / a_1$ with constants $1 \leq a_1 \leq 2$. Besides maximizing the objective function $J(y)$, cICA includes the similarity to a given reference component $r_n(t)$ as constraint into the optimization. This additional constraint can be formulated as $g(\boldsymbol{w}) = \rho - \epsilon (y, r) \le 0$, where $\rho$ denotes a pre-defined similarity threshold parameter, and $\epsilon(\cdot)$ a function that measures the closeness of the estimated source component $y$ to a reference $r$. The similarity can be simply defined as correlation between $y$ and $r$ as $\epsilon(y, r) = E[y, r]$. Based on these definitions, the augmented Lagrangian function $\mathcal{L}(\boldsymbol{W}, \boldsymbol{\mu})$ for estimating $N$ source components $y$, given $N$ references $r_n$ can be defined as}: 
+where $\rho$ denotes a positive constant, $E[\cdot]$ represents the expectation value and $\nu$ is a Gaussian random variable with zero mean and unit variance. Further $G(\cdot)$ can be any non-quadratic function, which can practically be chosen as $G(y) = (\textrm{log} \\, \textrm{cosh}(a_1 y)) / a_1$ with constants $1 \leq a_1 \leq 2$. Besides maximizing the objective function $J(y)$, cICA includes the similarity to a given reference component $r_n(t)$ as constraint into the optimization. This additional constraint can be formulated as $g(\boldsymbol{w}) = \rho - \epsilon (y, r) \le 0$, where $\rho$ denotes a pre-defined similarity threshold parameter, and $\epsilon(\cdot)$ a function that measures the closeness of the estimated source component $y$ to a reference $r$. The similarity can be simply defined as correlation between $y$ and $r$ as $\epsilon(y, r) = E[y, r]$. Based on these definitions, the augmented Lagrangian function $\mathcal{L}(\boldsymbol{W}, \boldsymbol{\mu})$ for estimating $N$ source components $y$, given $N$ references $r_n$ can be defined as}: 
 
 $$
 \begin{equation}
@@ -44,7 +44,7 @@ with $\boldsymbol{\mu} = (\mu_1, \ldots, \mu_N)^{T}$ denoting a set of Lagrangia
 
 $$
 \begin{equation}
-    \boldsymbol{W}_i = \boldsymbol{W}_{i-1} + \eta \frac{\partial \mathcal{L}(\boldsymbol{W})}{\partial \boldsymbol{W}}
+    \boldsymbol{W}_i = \boldsymbol{W} _{i-1} + \eta \frac{\partial \mathcal{L}(\boldsymbol{W})}{\partial \boldsymbol{W}}
 \end{equation}
 $$
 
@@ -54,7 +54,7 @@ As an alternative to maximizing negentropy as introduced above, the algorithm im
 
 $$
 \begin{equation}
-    J(y) = E \left[ \sum_{n=1}^N \textrm{log} \, p(\boldsymbol{w}_{n}^T\boldsymbol{x}) \right] + \textrm{log} \, |\textrm{det} \, (\boldsymbol{W})|
+    J(y) = E \left[ \sum_{n=1}^N \textrm{log} \, p(\boldsymbol{w}_{n}^T\boldsymbol{x}) \right] + \textrm{log} \\, |\textrm{det} \\, (\boldsymbol{W})|
 \end{equation}
 $$
 
