@@ -14,7 +14,7 @@ A demo version is provided, which can be directly run in Google Colab with:
 
 > https://colab.research.google.com/github/simonvino/constrained_ICA/blob/main/Demo_colab_constrained_ICA.ipynb
 
-## Theory
+## Background
 
 Like in classical ICA, the basic goal of constrained ICA (cICA) is to estimate a set of $N$ source components $\boldsymbol{y} \in \mathbb{R}^{N}$ from the observed data $\boldsymbol{x} \in \mathbb{R}^{K}$ by estimating a demixing/weight matrix $\boldsymbol{W} \in \mathbb{R}^{N \times K}$:
 
@@ -54,11 +54,11 @@ As an alternative to maximizing negentropy as introduced above, the algorithm im
 
 $$
 \begin{equation}
-    J(y) = E \left[ \sum_{n=1}^N \textrm{log} \, p(\boldsymbol{w}_{n}^T\boldsymbol{x}) \right] + \textrm{log} \\, |\textrm{det} \\, (\boldsymbol{W})|
+    J(\boldsymbol{y}) = E \left[ \sum_{n=1}^N \textrm{log} \, p(\boldsymbol{w}_{n}^T\boldsymbol{x}) \right] + \textrm{log} \\, |\textrm{det} \\, (\boldsymbol{W})|
 \end{equation}
 $$
 
-whereby $p(y)$ denotes the probability density function of $y$. To estimate a more diverse set of source signals the extended infomax algorithm adapts this nonlinearity to both super- and sub-Gaussion distributions [Lee at al. (1999)](https://dl.acm.org/doi/10.1162/089976699300016719). The gradient of $p(y)$ with respect to $y$ can be chosen as $\frac{p(\partial y)}{\partial y} = \textrm{tanh}(y) - y$ for sub-Gaussion sources and $\frac{\partial p(y)}{\partial y} = \textrm{tanh}(y) - y$ for super-Gaussion sources.
+whereby $p(y)$ denotes the probability density function of $y$. To estimate a more diverse set of source signals the extended infomax algorithm adapts this nonlinearity to both super- and sub-Gaussion distributions [Lee at al. (1999)](https://dl.acm.org/doi/10.1162/089976699300016719). The gradient of $p(y)$ with respect to $y$ can be chosen as $\frac{\partial p(y)}{\partial y} = \textrm{tanh}(y) - y$ for sub-Gaussion sources and $\frac{\partial p(y)}{\partial y} = - \textrm{tanh}(y) - y$ for super-Gaussion sources.
 
 Per default this implementation maximizes Negentropy (argument ``` obj_func='negentr' ```), but can be adapted to the Infomax (``` obj_func='infomax' ```), as well as extended Infomax (``` obj_func='ext_infomax' ```).  
 
