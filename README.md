@@ -24,7 +24,7 @@ $$
 \end{equation}
 $$
 
-Different objective functions  have been proposed to estimate independent components $\boldsymbol{y}$ from data $\boldsymbol{x}$. In their original paper [Lu and Rajapaske (2006)](https://www.sciencedirect.com/science/article/abs/pii/S0925231205003176) proposed to use and approximation of negentropy as objective function:
+Different objective functions have been proposed to estimate independent components $\boldsymbol{y}$ from data $\boldsymbol{x}$. In their original paper [Lu and Rajapaske (2006)](https://www.sciencedirect.com/science/article/abs/pii/S0925231205003176) proposed to use and approximation of negentropy as objective function:
 
 $$
 \begin{equation}
@@ -58,7 +58,7 @@ $$
 \end{equation}
 $$
 
-whereby $p(y)$ denotes the probability density function of $y$. To estimate a more diverse set of source signals the extended infomax algorithm adapts this nonlinearity to both super- and sub-Gaussion distributions [Lee at al. (1999)](https://dl.acm.org/doi/10.1162/089976699300016719). The gradient of $p(y)$ with respect to $y$ can be chosen as $\frac{\partial p(y)}{\partial y} = \textrm{tanh}(y) - y$ for sub-Gaussion sources and $\frac{\partial p(y)}{\partial y} = - \textrm{tanh}(y) - y$ for super-Gaussion sources.
+whereby $p(y)$ denotes the probability density function of $y$. To estimate a more diverse set of source signals the extended infomax algorithm adapts this nonlinearity to both super- and sub-Gaussian distributions [Lee at al. (1999)](https://dl.acm.org/doi/10.1162/089976699300016719). The gradient of $p(y)$ with respect to $y$ can be chosen as $\frac{\partial p(y)}{\partial y} = \textrm{tanh}(y) - y$ for sub-Gaussian sources and $\frac{\partial p(y)}{\partial y} = - \textrm{tanh}(y) - y$ for super-Gaussian sources.
 
 Per default this implementation maximizes Negentropy (argument ``` obj_func='negentr' ```), but can be adapted to the Infomax (``` obj_func='infomax' ```), as well as extended Infomax (``` obj_func='ext_infomax' ```).  
 
