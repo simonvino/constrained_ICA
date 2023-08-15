@@ -36,7 +36,7 @@ where $\rho$ denotes a positive constant, $E[\cdot]$ represents the expectation 
 
 $$
 \begin{equation}
-    \mathcal{L}(\boldsymbol{W}, \boldsymbol{\mu}) = \sum_{n=1}^N \left( J(y) + \frac{\textrm{max}^2\{0, \mu_n + \gamma_n g_n(\boldsymbol{w}_n) \} - \mu_n^2}{2 \gamma_n} \right)
+    \mathcal{L}(\boldsymbol{W}, \boldsymbol{\mu}) = \sum_{n=1}^N \left( J(y) + \frac{\textrm{max}^2 \\{ 0, \mu_n + \gamma_n g_n(\boldsymbol{w}_n) \\} - \mu_n^2}{2 \gamma_n} \right)
 \end{equation}
 $$
 
